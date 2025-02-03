@@ -2,21 +2,25 @@ import cv2
 import json
 import numpy as np
 import os
-
+from datetime import datetime
 
 def visualize_and_annotate_black_regions(image_folder, json_path, output_folder):
     # JSON 파일 로드
-    with open(json_path, 'r') as f:
-        data = json.load(f)
+    if os.path.exists(json_path):
+        with open(json_path, 'r') as f:
+            data = json.load(f)
+    else:
+        # JSON 파일이 없으면 기본 구조 생성
+        data = {"images": [], "annotations": []}
 
     # 이미지 ID와 파일 이름 매핑
-    image_map = {img['id']: img['file_name'] for img in data['images']}
+    image_map = {img['id']: img['file_name'] for img in data.get('images', [])}
 
     # 어노테이션 리스트에 새로운 데이터를 추가하기 위해 초기화
     new_annotations = []
 
     # 어노테이션 반복 처리
-    for annotation in data['annotations']:
+    for annotation in data.get('annotations', []):
         image_id = annotation['image_id']
         file_name = image_map.get(image_id, None)
 
@@ -69,7 +73,7 @@ def visualize_and_annotate_black_regions(image_folder, json_path, output_folder)
             cv2.polylines(image, [np.array(segmentation).reshape(-1, 2)], isClosed=True, color=(255, 0, 0), thickness=2)  # 파란색 폴리곤
 
         # 출력 폴더에 저장
-        os.makedirs(output_folder, exist_ok=True)
+        os.makedirs(output_folder, exist_ok=True)  # 폴더 생성
         output_path = os.path.join(output_folder, file_name)
         cv2.imwrite(output_path, image)
         print(f"Saved visualized annotation for {file_name} to {output_path}")
@@ -77,8 +81,12 @@ def visualize_and_annotate_black_regions(image_folder, json_path, output_folder)
     # 기존 JSON 데이터에 새로운 어노테이션 추가
     data['annotations'].extend(new_annotations)
 
+    # 현재 날짜와 시간에 기반한 새로운 JSON 파일 이름 생성
+    current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    os.makedirs(output_folder, exist_ok=True)  # 폴더 생성
+    updated_json_path = os.path.join(output_folder, f"updated_annotations_{current_time}.json")
+
     # 업데이트된 JSON 파일 저장
-    updated_json_path = os.path.join(output_folder, "updated_annotations.json")
     with open(updated_json_path, 'w') as f:
         json.dump(data, f, indent=4)
 
@@ -87,7 +95,7 @@ def visualize_and_annotate_black_regions(image_folder, json_path, output_folder)
 
 # --- 실행 ---
 image_folder = "/home/scps/Desktop/jcw_ws/apple/test"  # 라벨링된 이미지 폴더 경로
-json_path = "./json/annotations_2024-12-30_16-49-24.json"  # JSON 파일 경로
+json_path = "./annotations_2025-12-30_16-49-24.json"  # JSON 파일 경로
 output_folder = "./visual2"  # 시각화 결과 저장 폴더
 
 visualize_and_annotate_black_regions(image_folder, json_path, output_folder)

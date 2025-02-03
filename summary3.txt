@@ -1,0 +1,63 @@
+Folder Analysis Summary
+==============================
+
+Folder: unripe_고두
+  Total .txt files: 1406
+  Empty .txt files: 943
+  Non-empty .txt files: 463
+
+Folder: semi_no
+  Total .txt files: 1860
+  Empty .txt files: 19
+  Non-empty .txt files: 1841
+
+Folder: semi_탄저
+  Total .txt files: 1817
+  Empty .txt files: 0
+  Non-empty .txt files: 1817
+
+Folder: unripe_탄저
+  Total .txt files: 1506
+  Empty .txt files: 1305
+  Non-empty .txt files: 201
+
+Folder: ripe_no
+  Total .txt files: 1648
+  Empty .txt files: 895
+  Non-empty .txt files: 753
+
+Folder: ripe_탄저
+  Total .txt files: 4933
+  Empty .txt files: 810
+  Non-empty .txt files: 4123
+
+Folder: semi_열과
+  Total .txt files: 1834
+  Empty .txt files: 0
+  Non-empty .txt files: 1834
+
+Folder: ripe_고두
+  Total .txt files: 5008
+  Empty .txt files: 796
+  Non-empty .txt files: 4212
+
+Folder: semi_고두
+  Total .txt files: 1812
+  Empty .txt files: 0
+  Non-empty .txt files: 1812
+
+Folder: unripe_no
+  Total .txt files: 2062
+  Empty .txt files: 0
+  Non-empty .txt files: 2062
+
+Folder: ripe_열과1
+  Total .txt files: 2855
+  Empty .txt files: 2324
+  Non-empty .txt files: 531
+
+Folder: unripe_열과1
+  Total .txt files: 2871
+  Empty .txt files: 2024
+  Non-empty .txt files: 847
+

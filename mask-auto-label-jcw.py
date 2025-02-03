@@ -66,8 +66,8 @@ def process_folder(image_folder, json_path):
         update_json_with_segmentation(json_path, idx, segmentations)
 
 # --- 폴더 지정 ---
-image_folder = "/mnt/data"  # 이미지 파일이 있는 폴더 경로
-json_path = "/mnt/data/labels_my-project-name_2024-12-30-01-54-16.json"  # JSON 파일 경로
+image_folder = "/home/scps/Desktop/jcw_ws/apple/test"  # 이미지 파일이 있는 폴더 경로
+json_path = "./test.json"  # JSON 파일 경로
 
 process_folder(image_folder, json_path)
 
