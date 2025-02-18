@@ -18,8 +18,8 @@ def click_event(event, x, y, flags, param):
 
         # 클릭한 색상의 범위 설정
         hue, sat, val = hsv_color
-        lower_bound = np.array([max(hue - 10, 0), max(sat - 40, 0), max(val - 40, 0)])
-        upper_bound = np.array([min(hue + 10, 179), min(sat + 40, 255), min(val + 40, 255)])
+        lower_bound = np.array([max(hue - 10, 0), max(sat - 70, 0), max(val - 70, 0)])
+        upper_bound = np.array([min(hue + 10, 179), min(sat + 70, 255), min(val + 70, 255)])
         print(f"Lower Bound: {lower_bound}, Upper Bound: {upper_bound}")
         
         selected_color = (lower_bound, upper_bound)
@@ -33,7 +33,7 @@ def click_event(event, x, y, flags, param):
         cv2.imshow("Filtered Image", result)
 
 # 이미지 불러오기
-image_path = "이미지_경로.jpg"  # 이미지 경로를 지정하세요
+image_path = input("이미지_경로.jpg : ")  # 이미지 경로를 지정하세요
 image = cv2.imread(image_path)
 
 # 이미지를 HSV로 변환
