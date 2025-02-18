@@ -4,13 +4,13 @@ import random
 import json
 
 # 원본 데이터셋 폴더 경로
-dataset_dir = "/mnt/data/dataset"  # 이미지와 JSON 파일이 함께 있는 폴더
+dataset_dir = "/home/scps/Desktop/jcw_ws/json_train"  # 이미지와 JSON 파일이 함께 있는 폴더
 
 # 데이터를 나눌 비율 설정
-split_ratio = {"train": 0.7, "val": 0.2, "test": 0.1}
+split_ratio = {"train": 0.6, "val": 0.2, "test": 0.2}
 
 # 대상 폴더 경로
-output_dir = "/mnt/data/split_dataset"
+output_dir = "/home/scps/Desktop/jcw_ws/final_json/image&roi"
 os.makedirs(output_dir, exist_ok=True)
 for split in split_ratio.keys():
     os.makedirs(os.path.join(output_dir, split, "images"), exist_ok=True)
@@ -42,8 +42,8 @@ test_files = matched_files[train_count + val_count:]
 # 파일 이동 함수
 def move_files(file_list, split_name):
     for img, json in file_list:
-        shutil.move(os.path.join(dataset_dir, img), os.path.join(output_dir, split_name, "images", img))
-        shutil.move(os.path.join(dataset_dir, json), os.path.join(output_dir, split_name, "annotations", json))
+        shutil.copy(os.path.join(dataset_dir, img), os.path.join(output_dir, split_name, "images", img))
+        shutil.copy(os.path.join(dataset_dir, json), os.path.join(output_dir, split_name, "annotations", json))
 
 # 데이터 이동
 move_files(train_files, "train")

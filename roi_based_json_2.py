@@ -5,8 +5,8 @@ import numpy as np
 from datetime import datetime
 
 # 경로 설정
-image_folder = "/mnt/data"
-output_folder = "/mnt/data"
+image_folder = "/home/scps/Desktop/jcw_ws/final_json/image&roi/val"
+output_folder = "/home/scps/Desktop/jcw_ws/final_json/json/val"
 
 # COCO 형식의 새로운 JSON 데이터 생성
 coco_data = {
